@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 static void	ft_putchar_hex(unsigned long int n, char c)
 {
 	if (n < 10)
@@ -64,6 +65,8 @@ static void	ft_put_space(t_strt *strt, int len)
 {
 	int n;
 
+	if (strt->type == 'p')
+		strt->precision = strt->precision + 2;
 	if(strt->precision != -1 && strt->precision > len)
 		n = strt->width - strt->precision;
 	else
@@ -89,20 +92,19 @@ static void	ft_put_prec(t_strt *strt, int len)
 	}
 }
 
-
 void	ft_if_pointer(t_strt *strt)
 {
 	unsigned long int	nb;
 	int			len;
 
 	nb = (unsigned long int)va_arg(strt->ap, unsigned long int);
-	len = ft_lenpointer(nb) + 2;
+	len = ft_lenpointer(nb);
 	if (strt->minus && strt->width > 0)
 	{
 		write(1, "0x", 2);
 		ft_put_prec(strt, len);
 		ft_put_pointer(nb);
-		ft_put_space(strt, len + 2);
+		ft_put_space(strt, len);
 	}
 	else if (strt->zero && strt->precision == -1)
 	{

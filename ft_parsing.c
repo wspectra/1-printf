@@ -47,20 +47,20 @@ static void	ft_flags(const char *str, t_strt *strt)
 
 static void	ft_what_type(t_strt *strt)
 {
-//	if (strt->type == 'c')
-//		ft_if_char(strt);
-//	else if (strt->type == 's') //null-terminated string
-//		ft_if_string(strt);
+	if (strt->type == 'c')
+		ft_if_char(strt);
+	else if (strt->type == 's') //null-terminated string
+		ft_if_string(strt);
 	if (strt->type == 'p') //pointer to void in an implementation-defined format
 		ft_if_pointer(strt);
-////	else if (strt->type == 'd' || strt->type == 'i') //int
-////		ft_if_int(strt);
-//	else if (strt->type == 'u') //insugned int
-//		ft_if_uns_int(strt);
-//	else if (strt->type == 'x' || strt->type == 'X') //unsigned int as a hexadecimal number
-//		ft_if_hex(strt);
-//	else if (strt->type == '%') //insugned int
-//		ft_if_procent(strt);
+//	else if (strt->type == 'd' || strt->type == 'i') //int
+//		ft_if_int(strt);
+	else if (strt->type == 'u') //insugned int
+		ft_if_uns_int(strt);
+	else if (strt->type == 'x' || strt->type == 'X') //unsigned int as a hexadecimal number
+		ft_if_hex(strt);
+	else if (strt->type == '%') //insugned int
+		ft_if_procent(strt);
 //	else
 //		ft_if_else(strt);
 }

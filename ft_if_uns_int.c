@@ -54,7 +54,6 @@ static void	ft_put_prec(t_strt *strt, int len)
 	}
 }
 
-
 void	ft_if_uns_int(t_strt *strt)
 {
 	unsigned int	nb;
