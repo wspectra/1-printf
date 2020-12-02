@@ -78,6 +78,7 @@ void		ft_parsing(const char *str, t_strt *strt)
 	if (str[strt->i] == '.')
 	{
 		strt->i++;
+		strt->precision = 0;
 		strt->precision = ft_int_to_char(str, strt);
 	}
 	if (str[strt->i])

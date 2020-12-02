@@ -97,7 +97,7 @@ void	ft_if_pointer(t_strt *strt)
 	unsigned long int	nb;
 	int			len;
 
-	nb = (unsigned long int)va_arg(strt->ap, unsigned long int);
+	nb = va_arg(strt->ap, unsigned long int);
 	len = ft_lenpointer(nb);
 	if (strt->minus && strt->width > 0)
 	{

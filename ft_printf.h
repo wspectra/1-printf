@@ -43,5 +43,7 @@ size_t	ft_strlen(const char *str);
 int		ft_lenint(unsigned int n);
 void	ft_putchar(char c);
 void	ft_putnbr(long int n);
+char	*ft_strdup(const char *s1);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

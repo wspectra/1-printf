@@ -79,7 +79,7 @@ static void	ft_put_space(t_strt *strt, int len)
 
 static void	ft_put_prec(t_strt *strt, int len)
 {
-	if (len < strt->precision && strt->precision != -1)
+	if (len < strt->precision && strt->precision >= 0)
 	{
 		while (len != strt->precision)
 		{
@@ -97,6 +97,11 @@ void	ft_if_hex(t_strt *strt)
 	int			len;
 
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
+//	if (!nb)
+//	{
+//		len = 0;
+//		ft_put_space(strt, len);
+//	}
 	len = ft_lenhex(nb);
 	if (strt->minus && strt->width > 0)
 	{

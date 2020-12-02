@@ -58,8 +58,12 @@ void		ft_if_string(t_strt *strt)
 	int		len;
 
 	str = (char*)va_arg(strt->ap, char*);
+	if (!str)
+	{
+		str = ft_strdup("(null)");
+	}
 	len = ft_strlen(str);
-	if (len > strt->precision && strt->precision != -1)
+	if (len > strt->precision && strt->precision >= 0)
 		len = strt->precision;
 	if (strt->minus && strt->width > 0)
 	{
@@ -78,4 +82,6 @@ void		ft_if_string(t_strt *strt)
 	}
 	else
 		ft_putstr(strt, len, str);
+//	free(str);
 }
+
