@@ -26,7 +26,7 @@ static void	ft_putchar_hex(unsigned long int n, char c)
 
 void	ft_put_pointer(unsigned long int n)
 {
-	if (n > 16)
+	if (n >= 16)
 	{
 		ft_put_pointer(n / 16);
 		ft_putchar_hex((n % 16), 'x');
@@ -66,7 +66,7 @@ static void	ft_put_space(t_strt *strt, int len)
 	int n;
 
 	if (strt->type == 'p')
-		strt->precision = strt->precision + 2;
+		strt->width = strt->width - 2;
 	if(strt->precision != -1 && strt->precision > len)
 		n = strt->width - strt->precision;
 	else

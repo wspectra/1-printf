@@ -8,8 +8,8 @@ int main()
 //	int k = ft_printf("qwerty%10.3sqw\n", str);
 //write(1, "\0", 1);
 
-	int i = printf("or |%.x|\n", 0);
-	int k = ft_printf("my |%.x|\n", 0);
+	int i = printf("or |%5p\n", 4316124215);
+	int k = ft_printf("my |%5p\n", 4316124215);
 	printf("================\nor %d\nmy %d\n", i, k);
 //	int m = 5;
 //	ft_printf("%-20p\n", &m);

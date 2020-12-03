@@ -26,7 +26,7 @@ void	ft_putchar_hex(unsigned int n, char c)
 
 void	ft_put_hex(unsigned int n, char c)
 {
-	if (n > 16)
+	if (n >= 16)
 	{
 		ft_put_hex(n / 16, c);
 		ft_putchar_hex((n % 16), c);
