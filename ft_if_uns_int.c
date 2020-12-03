@@ -62,14 +62,24 @@ void	ft_if_uns_int(t_strt *strt)
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
 
 	len = ft_lenint(nb);
-	if (strt->minus && strt->width > 0)
+	if (strt->precision == 0 && nb == 0)
+	{
+		if (strt->width > 0)
+		{
+			write(1, " ", 1);
+			ft_put_space(strt, len);
+		}
+		else
+			return ;
+	}
+	else if (strt->minus  && strt->width > 0)
 	{
 
 		ft_put_prec(strt, len);
 		ft_putnbr(nb);
 		ft_put_space(strt, len);
 	}
-	else if (strt->zero && strt->precision >= 0)
+	else if (strt->zero && strt->precision == -1)
 	{
 		ft_put_zero(strt, len);
 		ft_put_prec(strt, len);

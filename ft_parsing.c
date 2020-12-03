@@ -53,8 +53,8 @@ static void	ft_what_type(t_strt *strt)
 		ft_if_string(strt);
 	if (strt->type == 'p') //pointer to void in an implementation-defined format
 		ft_if_pointer(strt);
-//	else if (strt->type == 'd' || strt->type == 'i') //int
-//		ft_if_int(strt);
+	else if (strt->type == 'd' || strt->type == 'i') //int
+		ft_if_int(strt);
 	else if (strt->type == 'u') //insugned int
 		ft_if_uns_int(strt);
 	else if (strt->type == 'x' || strt->type == 'X') //unsigned int as a hexadecimal number

@@ -6,8 +6,10 @@ int main()
 //	char *str = strdup("12345");
 //	char	*str;
 //	int k = ft_printf("qwerty%10.3sqw\n", str);
-	int i = printf("or |%x\n", 0);
-	int k = ft_printf("my |%x\n", 0);
+//write(1, "\0", 1);
+
+	int i = printf("or |%.x|\n", 0);
+	int k = ft_printf("my |%.x|\n", 0);
 	printf("================\nor %d\nmy %d\n", i, k);
 //	int m = 5;
 //	ft_printf("%-20p\n", &m);
