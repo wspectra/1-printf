@@ -56,6 +56,5 @@ void		ft_if_string(t_strt *strt)
 	}
 	else
 		ft_putstr(strt, len, str);
-//	free(str);
 }
 

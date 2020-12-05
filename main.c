@@ -7,10 +7,13 @@ int main()
 //	char	*str;
 //	int k = ft_printf("qwerty%10.3sqw\n", str);
 //write(1, "\0", 1);
-
-	int i = printf("or |%% *.5i 42 == |%     4.5i|\n", 42);
-	int k = ft_printf("my |%% *.5i 42 == |%     4.5i|\n", 42);
-	printf("================\nor %d\nmy %d\n", i, k);
+//	char *str1;
+//	char *str2 = strdup("qwerty");
+//	int i = printf("or |%s\n", NULL);
+//	int k =
+	printf("or |%s\n", NULL);
+//	ft_printf("my |%s\n", NULL);
+//	printf("================\nor %d\nmy %d\n", i, k);
 //	int m = 5;
 //	ft_printf("%-20p\n", &m);
 //	printf("%-20p\n", &m);

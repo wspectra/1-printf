@@ -48,5 +48,6 @@ int			ft_printf(const char *str, ...)
 			ft_parsing(str, &strt);
 		}
 	}
+	va_end(strt.ap);
 	return (strt.count);
 }
