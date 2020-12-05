@@ -25,7 +25,7 @@ static void	ft_write(const char *str, t_strt *strt)
 {
 	while (str[strt->i] != '%' && str[strt->i] != '\0')
 	{
-		write(1, &str[strt->i], 1);
+		ft_putchar(str[strt->i], 0);
 		strt->i++;
 		strt->count = strt->count + 1;
 	}

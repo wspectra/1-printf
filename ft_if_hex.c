@@ -12,17 +12,6 @@
 
 #include "ft_printf.h"
 
-void	ft_put_hex(unsigned int n, char c)
-{
-	if (n >= 16)
-	{
-		ft_put_hex(n / 16, c);
-		ft_putchar((n % 16),c);
-	}
-	else
-		ft_putchar(n, c);
-}
-
 int		ft_lenhex(unsigned int n)
 {
 	int size;
@@ -57,25 +46,25 @@ void	ft_if_hex(t_strt *strt)
 	{
 
 		ft_put_prec(strt, len);
-		ft_put_hex(nb, strt->type);
+		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
 	else if (strt->zero && strt->precision == -1)
 	{
 		ft_put_zero(strt, len);
 		ft_put_prec(strt, len);
-		ft_put_hex(nb, strt->type);
+		ft_putnbr(nb, strt->type);
 	}
 	else if (strt->width > 0)
 	{
 		ft_put_space(strt, len);
 		ft_put_prec(strt, len);
-		ft_put_hex(nb, strt->type);
+		ft_putnbr(nb, strt->type);
 	}
 	else
 	{
 		ft_put_prec(strt, len);
-		ft_put_hex(nb, strt->type);
+		ft_putnbr(nb, strt->type);
 	}
 	strt->count  = strt->count + len;
 }

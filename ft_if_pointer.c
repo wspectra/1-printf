@@ -12,17 +12,6 @@
 
 #include "ft_printf.h"
 
-void	ft_put_pointer(unsigned long int n)
-{
-	if (n >= 16)
-	{
-		ft_put_pointer(n / 16);
-		ft_putchar((n % 16), 'x');
-	}
-	else
-		ft_putchar(n, 'x');
-}
-
 int		ft_lenpointer(unsigned long int n)
 {
 	int size;
@@ -47,7 +36,7 @@ void	ft_if_pointer(t_strt *strt)
 	{
 		write(1, "0x", 2);
 		ft_put_prec(strt, len);
-		ft_put_pointer(nb);
+		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
 	else if (strt->zero && strt->precision == -1)
@@ -55,20 +44,20 @@ void	ft_if_pointer(t_strt *strt)
 		ft_put_zero(strt, len);
 		write(1, "0x", 2);
 		ft_put_prec(strt, len);
-		ft_put_pointer(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else if (strt->width > 0)
 	{
 		ft_put_space(strt, len);
 		write(1, "0x", 2);
 		ft_put_prec(strt, len);
-		ft_put_pointer(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else
 	{
 		write(1, "0x", 2);
 		ft_put_prec(strt, len);
-		ft_put_pointer(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	strt->count  = strt->count + len + 2;
 }

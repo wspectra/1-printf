@@ -35,25 +35,25 @@ void	ft_if_uns_int(t_strt *strt)
 	{
 
 		ft_put_prec(strt, len);
-		ft_putnbr(nb);
+		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
 	else if (strt->zero && strt->precision == -1)
 	{
 		ft_put_zero(strt, len);
 		ft_put_prec(strt, len);
-		ft_putnbr(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else if (strt->width > 0)
 	{
 		ft_put_space(strt, len);
 		ft_put_prec(strt, len);
-		ft_putnbr(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else
 	{
 		ft_put_prec(strt, len);
-		ft_putnbr(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	strt->count  = strt->count + len;
 }

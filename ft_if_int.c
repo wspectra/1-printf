@@ -32,26 +32,10 @@ int		ft_len(int n)
 	}
 	return (size + 1);
 }
-void	ft_putint(long int n)
-{
-	if (n == -2147483648)
-	{
-		write(1, "2147483648", 10);
-		return ;
-	}
-	if (n < 0)
-		n = n * (-1);
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + 48, 0);
-	}
-	else
-		ft_putchar(n + 48, 0);
-}
+
 void	ft_if_int(t_strt *strt)
 {
-	int			nb;
+	long int			nb;
 	int			len;
 	int			minus;
 	minus = 0;
@@ -72,6 +56,7 @@ void	ft_if_int(t_strt *strt)
 	if (nb < 0)
 	{
 		minus = 1;
+		nb = -nb;
 		if(strt->precision != -1)
 			strt->precision++;
 	}
@@ -80,7 +65,7 @@ void	ft_if_int(t_strt *strt)
 		if (minus == 1)
 			write(1, "-", 1);
 		ft_put_prec(strt, len);
-		ft_putint(nb);
+		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
 	else if (strt->zero == 1 && strt->precision == -1)
@@ -89,7 +74,7 @@ void	ft_if_int(t_strt *strt)
 			write(1, "-", 1);
 		ft_put_zero(strt, len);
 		ft_put_prec(strt, len);
-		ft_putint(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else if (strt->width > 0)
 	{
@@ -97,14 +82,14 @@ void	ft_if_int(t_strt *strt)
 		if (minus == 1)
 			write(1, "-", 1);
 		ft_put_prec(strt, len);
-		ft_putint(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	else
 	{
 		if (minus == 1)
 			write(1, "-", 1);
 		ft_put_prec(strt, len);
-		ft_putint(nb);
+		ft_putnbr(nb, strt->type);
 	}
 	if (minus == 1)
 		strt->count  = strt->count++;

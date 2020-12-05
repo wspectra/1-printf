@@ -74,6 +74,22 @@ void	ft_putchar(unsigned long int n, char type)
 	write(1, &n, 1);
 }
 
+void	ft_putnbr(unsigned long int n, char type)
+{
+	unsigned long int div;
+
+	if (type == 'x' || type == 'X' || type == 'p')
+		div = 16;
+	else
+		div = 10;
+	if (n >= div)
+	{
+		ft_putnbr(n / div, type);
+		ft_putchar((n % div), type);
+	}
+	else
+		ft_putchar(n, type);
+}
 
 
 
@@ -111,21 +127,7 @@ int		ft_lenint(unsigned int n)
 
 
 
-void	ft_putnbr(long int n)
-{
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = n * (-1);
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + 48, 0);
-	}
-	else
-		ft_putchar(n + 48, 0);
-}
+
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
