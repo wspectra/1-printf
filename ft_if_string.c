@@ -19,7 +19,7 @@ static void	ft_putstr(t_strt *strt, int len, char *str)
 	i = 0;
 	while (len > 0)
 	{
-		write(1, &str[i], 1);
+		ft_putchar(str[i], 0);
 		len--;
 		i++;
 		strt->count++;

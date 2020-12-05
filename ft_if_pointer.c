@@ -12,27 +12,15 @@
 
 #include "ft_printf.h"
 
-static void	ft_putchar_hex(unsigned long int n, char c)
-{
-	if (n < 10)
-		n = n + 48;
-	else if (c == 'X')
-		n = n + 55;
-	else if (c == 'x')
-		n = n + 87;
-	write(1, &n, 1);
-
-}
-
 void	ft_put_pointer(unsigned long int n)
 {
 	if (n >= 16)
 	{
 		ft_put_pointer(n / 16);
-		ft_putchar_hex((n % 16), 'x');
+		ft_putchar((n % 16), 'x');
 	}
 	else
-		ft_putchar_hex(n, 'x');
+		ft_putchar(n, 'x');
 }
 
 int		ft_lenpointer(unsigned long int n)

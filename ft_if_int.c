@@ -44,10 +44,10 @@ void	ft_putint(long int n)
 	if (n > 9)
 	{
 		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + 48);
+		ft_putchar((n % 10) + 48, 0);
 	}
 	else
-		ft_putchar(n + 48);
+		ft_putchar(n + 48, 0);
 }
 void	ft_if_int(t_strt *strt)
 {

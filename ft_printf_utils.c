@@ -58,6 +58,23 @@ void	ft_put_prec(t_strt *strt, int len)
 	}
 }
 
+void	ft_putchar(unsigned long int n, char type)
+{
+	if (type == 0)
+	{
+		write(1, &n, 1);
+		return ;
+	}
+	if (n < 10)
+		n = n + 48;
+	else if (type == 'X')
+		n = n + 55;
+	else if (type == 'x' || type == 'p' )
+		n = n + 87;
+	write(1, &n, 1);
+}
+
+
 
 
 
@@ -92,10 +109,7 @@ int		ft_lenint(unsigned int n)
 	return (size + 1);
 }
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+
 
 void	ft_putnbr(long int n)
 {
@@ -107,10 +121,10 @@ void	ft_putnbr(long int n)
 	if (n > 9)
 	{
 		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + 48);
+		ft_putchar((n % 10) + 48, 0);
 	}
 	else
-		ft_putchar(n + 48);
+		ft_putchar(n + 48, 0);
 }
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
