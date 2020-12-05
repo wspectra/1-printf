@@ -110,8 +110,7 @@ int		ft_len_numb(unsigned long n, char type)
 	return (size + 1);
 }
 
-
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -122,29 +121,6 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
-
-//int		ft_lenint(unsigned int n)
-//{
-//	int size;
-//
-////	if (n < 0)
-////	{
-////		size = 1;
-////		n = n * (-1);
-////	}
-////	else
-//		size = 0;
-//	while (n >= 10)
-//	{
-//		size++;
-//		n = n / 10;
-//	}
-//	return (size + 1);
-//}
-
-
-
-
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -176,4 +152,18 @@ char	*ft_strdup(const char *s1)
 		return (NULL);
 	ft_memcpy(s2, s1, (a + 1));
 	return (s2);
+}
+
+void	ft_putstr(t_strt *strt, int len, char *str)
+{
+	int i;
+
+	i = 0;
+	while (len > 0)
+	{
+		ft_putchar(str[i], 0);
+		len--;
+		i++;
+		strt->count++;
+	}
 }

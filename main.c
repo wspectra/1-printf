@@ -3,13 +3,13 @@
 
 int main()
 {
-//	char *str = strdup("12345");
+	char *str = strdup("badabada");
 //	char	*str;
 //write(1, "\0", 1);
 //	char *str1;
 //	char *str2 = strdup("qwerty");
-	int k = ft_printf("my |%2.7x\n", 3267);
-	int i = printf("or |%2.7x\n", 3267);
+	int k = ft_printf("my |%p\n", 140732675873192);
+	int i = printf("or |%p\n", 140732675873192);
 //	int k =
 //	printf("or |%s\n", NULL);
 //	ft_printf("my |%s\n", NULL);

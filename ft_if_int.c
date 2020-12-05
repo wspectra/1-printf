@@ -24,7 +24,6 @@ void	ft_if_int(t_strt *strt)
 	{
 		if (strt->width > 0)
 		{
-			strt->count++;
 			ft_put_space(strt, len);
 			return;
 		}
@@ -48,7 +47,7 @@ void	ft_if_int(t_strt *strt)
 		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
-	else if (strt->zero == 1 && strt->precision == -1)
+	else if (strt->zero == 1 && strt->precision <= -1)
 	{
 		if (minus == 1)
 			write(1, "-", 1);
@@ -71,8 +70,6 @@ void	ft_if_int(t_strt *strt)
 		ft_put_prec(strt, len);
 		ft_putnbr(nb, strt->type);
 	}
-	if (minus == 1)
-		strt->count  = strt->count++;
 	strt->count = strt->count + len;
 }
 

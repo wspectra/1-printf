@@ -12,20 +12,6 @@
 
 #include "ft_printf.h"
 
-static void	ft_putstr(t_strt *strt, int len, char *str)
-{
-	int i;
-
-	i = 0;
-	while (len > 0)
-	{
-		ft_putchar(str[i], 0);
-		len--;
-		i++;
-		strt->count++;
-	}
-}
-
 void		ft_if_string(t_strt *strt)
 {
 	char	*str;

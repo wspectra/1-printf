@@ -38,7 +38,7 @@ void	ft_if_uns_int(t_strt *strt)
 		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
 	}
-	else if (strt->zero && strt->precision == -1)
+	else if (strt->zero == 1 && strt->precision <= -1)
 	{
 		ft_put_zero(strt, len);
 		ft_put_prec(strt, len);

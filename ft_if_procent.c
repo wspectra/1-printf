@@ -36,4 +36,5 @@ void	ft_if_procent(t_strt *strt)
 	{
 		ft_putchar('%', 0);
 	}
+	strt->count++;
 }
