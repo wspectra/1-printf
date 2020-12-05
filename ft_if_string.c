@@ -26,19 +26,6 @@ static void	ft_putstr(t_strt *strt, int len, char *str)
 	}
 }
 
-static void	ft_put_zero(t_strt *strt, int len)
-{
-	int n;
-
-	n = strt->width - len;
-	while (n > 0)
-	{
-		write(1, "0", 1);
-		strt->count++;
-		n--;
-	}
-}
-
 static void	ft_put_space(t_strt *strt, int len)
 {
 	int n;

@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 SRCS = ft_if_procent.c ft_printf_utils.c ft_if_int.c ft_parsing.c ft_printf.c ft_if_char.c\
-        ft_if_else.c ft_if_uns_int.c ft_if_hex.c ft_if_pointer.c ft_if_string.c
+        ft_if_uns_int.c ft_if_hex.c ft_if_pointer.c ft_if_string.c
 
 
 OBJS	= $(SRCS:.c=.o)

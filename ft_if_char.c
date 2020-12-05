@@ -21,19 +21,6 @@ static void	ft_printchar(t_strt *strt)
 	strt->count++;
 }
 
-static void	ft_put_zero(t_strt *strt)
-{
-	int n;
-
-	n = strt->width - 1;
-	while (n > 0)
-	{
-		write(1, "0", 1);
-		strt->count++;
-		n--;
-	}
-}
-
 static void	ft_put_space(t_strt *strt)
 {
 	int n;
@@ -58,7 +45,7 @@ void		ft_if_char(t_strt *strt)
 		}
 		else if (strt->zero)
 		{
-			ft_put_zero(strt);
+			ft_put_zero(strt, 1);
 			ft_printchar(strt);
 		}
 		else

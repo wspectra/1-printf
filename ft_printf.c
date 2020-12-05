@@ -50,7 +50,3 @@ int			ft_printf(const char *str, ...)
 	}
 	return (strt.count);
 }
-
-//printf("\ncount: %d\n i: %d\n", strt.count, strt.i);
-//printf("\nminus: %d\nzero: %d\nwidth:%d\nprecision:%d\ntype:%c\n=============\n",
-//strt.minus, strt.zero, strt.width, strt.precision, strt.type);

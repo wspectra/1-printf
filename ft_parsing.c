@@ -17,7 +17,6 @@ static int	ft_int_to_char(const char *str, t_strt *strt)
 	int nb;
 
 	nb = 0;
-
 	if (str[strt->i] == '*')
 	{
 		nb = va_arg(strt->ap, int);
@@ -50,20 +49,18 @@ static void	ft_what_type(t_strt *strt)
 {
 	if (strt->type == 'c')
 		ft_if_char(strt);
-	else if (strt->type == 's') //null-terminated string
+	else if (strt->type == 's')
 		ft_if_string(strt);
-	if (strt->type == 'p') //pointer to void in an implementation-defined format
+	if (strt->type == 'p')
 		ft_if_pointer(strt);
-	else if (strt->type == 'd' || strt->type == 'i') //int
+	else if (strt->type == 'd' || strt->type == 'i')
 		ft_if_int(strt);
-	else if (strt->type == 'u') //insugned int
+	else if (strt->type == 'u')
 		ft_if_uns_int(strt);
-	else if (strt->type == 'x' || strt->type == 'X') //unsigned int as a hexadecimal number
+	else if (strt->type == 'x' || strt->type == 'X')
 		ft_if_hex(strt);
-	else if (strt->type == '%') //insugned int
+	else if (strt->type == '%')
 		ft_if_procent(strt);
-//	else
-//		ft_if_else(strt);
 }
 
 void		ft_parsing(const char *str, t_strt *strt)
@@ -71,7 +68,7 @@ void		ft_parsing(const char *str, t_strt *strt)
 	ft_flags(str, strt);
 	if (str[strt->i] == ' ')
 		write(1, " ", 1);
-	while(str[strt->i] == ' ' && str[strt->i] != '\0')
+	while (str[strt->i] == ' ' && str[strt->i] != '\0')
 		strt->i = strt->i + 1;
 	strt->width = ft_int_to_char(str, strt);
 	if (strt->width < 0)
