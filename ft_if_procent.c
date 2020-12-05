@@ -18,19 +18,6 @@ static void	ft_printchar(t_strt *strt)
 	strt->count++;
 }
 
-
-static void	ft_put_space(t_strt *strt)
-{
-	int n;
-
-	n = strt->width - 1;
-	while (n > 0)
-	{
-		write(1, " ", 1);
-		strt->count++;
-		n--;
-	}
-}
 void	ft_if_procent(t_strt *strt)
 {
 	if (strt->width > 0)
@@ -38,7 +25,7 @@ void	ft_if_procent(t_strt *strt)
 		if (strt->minus)
 		{
 			ft_printchar(strt);
-			ft_put_space(strt);
+			ft_put_space(strt, 1);
 		}
 		else if (strt->zero)
 		{
@@ -47,7 +34,7 @@ void	ft_if_procent(t_strt *strt)
 		}
 		else
 		{
-			ft_put_space(strt);
+			ft_put_space(strt, 1);
 			ft_printchar(strt);
 		}
 	}

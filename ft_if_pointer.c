@@ -48,26 +48,6 @@ int		ft_lenpointer(unsigned long int n)
 	return (size + 1);
 }
 
-
-
-static void	ft_put_space(t_strt *strt, int len)
-{
-	int n;
-
-	if (strt->type == 'p')
-		strt->width = strt->width - 2;
-	if(strt->precision != -1 && strt->precision > len)
-		n = strt->width - strt->precision;
-	else
-		n = strt->width - len;
-	while (n > 0)
-	{
-		write(1, " ", 1);
-		strt->count++;
-		n--;
-	}
-}
-
 static void	ft_put_prec(t_strt *strt, int len)
 {
 	if (len < strt->precision && strt->precision != -1)

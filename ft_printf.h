@@ -39,6 +39,7 @@ void	ft_if_int(t_strt *strt);
 void	ft_if_uns_int(t_strt *strt);
 void	ft_if_hex(t_strt *strt);
 void	ft_put_zero(t_strt *strt, int len);
+void	ft_put_space(t_strt *strt, int len);
 
 
 void	ft_if_else(t_strt *strt);

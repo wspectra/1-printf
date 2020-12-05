@@ -12,24 +12,6 @@
 
 #include "ft_printf.h"
 
-static void	ft_put_space(t_strt *strt, int len)
-{
-	int n;
-
-//	if ((strt->type == 'i'|| strt->type == 'd') && minus == 1)
-//			strt->width = strt->width - 1;
-	if(strt->precision != -1 && strt->precision > len)
-		n = strt->width - strt->precision;
-	else
-		n = strt->width - len;
-	while (n > 0)
-	{
-		write(1, " ", 1);
-		strt->count++;
-		n--;
-	}
-}
-
 static void	ft_put_prec(t_strt *strt, int len)
 {
 	if (len < strt->precision && strt->precision != -1)
