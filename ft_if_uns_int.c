@@ -60,14 +60,15 @@ void	ft_if_uns_int(t_strt *strt)
 	int			len;
 
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
-
 	len = ft_lenint(nb);
 	if (strt->precision == 0 && nb == 0)
 	{
 		if (strt->width > 0)
 		{
 			write(1, " ", 1);
+			strt->count++;
 			ft_put_space(strt, len);
+			return;
 		}
 		else
 			return ;

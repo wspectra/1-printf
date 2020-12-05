@@ -17,6 +17,7 @@ static int	ft_int_to_char(const char *str, t_strt *strt)
 	int nb;
 
 	nb = 0;
+
 	if (str[strt->i] == '*')
 	{
 		nb = va_arg(strt->ap, int);
@@ -68,6 +69,10 @@ static void	ft_what_type(t_strt *strt)
 void		ft_parsing(const char *str, t_strt *strt)
 {
 	ft_flags(str, strt);
+	if (str[strt->i] == ' ')
+		write(1, " ", 1);
+	while(str[strt->i] == ' ' && str[strt->i] != '\0')
+		strt->i = strt->i + 1;
 	strt->width = ft_int_to_char(str, strt);
 	if (strt->width < 0)
 	{
