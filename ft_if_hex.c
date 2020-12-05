@@ -48,19 +48,6 @@ int		ft_lenhex(unsigned int n)
 	return (size + 1);
 }
 
-static void	ft_put_prec(t_strt *strt, int len)
-{
-	if (len < strt->precision && strt->precision >= 0)
-	{
-		while (len != strt->precision)
-		{
-			write(1, "0", 1);
-			strt->count++;
-			len++;
-		}
-	}
-}
-
 void	ft_if_hex(t_strt *strt)
 {
 	unsigned int	nb;

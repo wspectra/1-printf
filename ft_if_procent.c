@@ -17,7 +17,6 @@ static void	ft_printchar(t_strt *strt)
 	write(1, "%", 1);
 	strt->count++;
 }
-
 void	ft_if_procent(t_strt *strt)
 {
 	if (strt->width > 0)

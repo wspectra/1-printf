@@ -48,19 +48,6 @@ int		ft_lenpointer(unsigned long int n)
 	return (size + 1);
 }
 
-static void	ft_put_prec(t_strt *strt, int len)
-{
-	if (len < strt->precision && strt->precision != -1)
-	{
-		while (len != strt->precision)
-		{
-			write(1, "0", 1);
-			strt->count++;
-			len++;
-		}
-	}
-}
-
 void	ft_if_pointer(t_strt *strt)
 {
 	unsigned long int	nb;
