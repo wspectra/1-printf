@@ -18,7 +18,7 @@ void	ft_if_uns_int(t_strt *strt)
 	int			len;
 
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
-	len = ft_lenint(nb);
+	len = ft_len_numb(nb, strt->type);
 	if (strt->precision == 0 && nb == 0)
 	{
 		if (strt->width > 0)

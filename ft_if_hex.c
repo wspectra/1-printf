@@ -12,26 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_lenhex(unsigned int n)
-{
-	int size;
-
-	size = 0;
-	while (n >= 16)
-	{
-		size++;
-		n = n / 16;
-	}
-	return (size + 1);
-}
-
 void	ft_if_hex(t_strt *strt)
 {
 	unsigned int	nb;
 	int			len;
 
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
-	len = ft_lenhex(nb);
+	len = ft_len_numb(nb, strt->type);;
 	if (strt->precision == 0 && nb == 0)
 	{
 		if (strt->width > 0)

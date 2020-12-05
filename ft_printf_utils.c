@@ -91,7 +91,24 @@ void	ft_putnbr(unsigned long int n, char type)
 		ft_putchar(n, type);
 }
 
+int		ft_len_numb(unsigned long n, char type)
+{
+	int size;
+	unsigned long int div;
 
+	size = 0;
+	if (type == 'x' || type == 'X' || type == 'p')
+		div = 16;
+	else
+		div = 10;
+
+	while (n >= div)
+	{
+		size++;
+		n = n / div;
+	}
+	return (size + 1);
+}
 
 
 size_t	ft_strlen(const char *str)
@@ -106,24 +123,24 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int		ft_lenint(unsigned int n)
-{
-	int size;
-
-//	if (n < 0)
+//int		ft_lenint(unsigned int n)
+//{
+//	int size;
+//
+////	if (n < 0)
+////	{
+////		size = 1;
+////		n = n * (-1);
+////	}
+////	else
+//		size = 0;
+//	while (n >= 10)
 //	{
-//		size = 1;
-//		n = n * (-1);
+//		size++;
+//		n = n / 10;
 //	}
-//	else
-		size = 0;
-	while (n >= 10)
-	{
-		size++;
-		n = n / 10;
-	}
-	return (size + 1);
-}
+//	return (size + 1);
+//}
 
 
 

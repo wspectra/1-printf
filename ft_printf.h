@@ -43,13 +43,12 @@ void	ft_put_space(t_strt *strt, int len);
 void	ft_put_prec(t_strt *strt, int len);
 void	ft_putchar(unsigned long int n, char type);
 void	ft_putnbr(unsigned long int n, char type);
+int		ft_len_numb(unsigned long n, char type);
 
 
-void	ft_if_else(t_strt *strt);
 size_t	ft_strlen(const char *str);
-int		ft_lenint(unsigned int n);
 
-//void	ft_putnbr(long int n);
+
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 

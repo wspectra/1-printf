@@ -12,40 +12,18 @@
 
 #include "ft_printf.h"
 
-int		ft_len(int n)
-{
-	int size;
-
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
-	{
-		size = 1;
-		n = n * (-1);
-	}
-	else
-		size = 0;
-	while (n >= 10)
-	{
-		size++;
-		n = n / 10;
-	}
-	return (size + 1);
-}
-
 void	ft_if_int(t_strt *strt)
 {
 	long int			nb;
 	int			len;
 	int			minus;
 	minus = 0;
+	len = 0;
 	nb = (int)va_arg(strt->ap, int);
-	len = ft_len(nb);
 	if (strt->precision == 0 && nb == 0)
 	{
 		if (strt->width > 0)
 		{
-			write(1, " ", 1);
 			strt->count++;
 			ft_put_space(strt, len);
 			return;
@@ -57,9 +35,11 @@ void	ft_if_int(t_strt *strt)
 	{
 		minus = 1;
 		nb = -nb;
+		len = 1;
 		if(strt->precision != -1)
 			strt->precision++;
 	}
+	len = len + ft_len_numb(nb, strt->type);
 	if (strt->minus && strt->width > 0)
 	{
 		if (minus == 1)

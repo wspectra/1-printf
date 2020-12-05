@@ -12,26 +12,13 @@
 
 #include "ft_printf.h"
 
-int		ft_lenpointer(unsigned long int n)
-{
-	int size;
-
-	size = 0;
-	while (n >= 16)
-	{
-		size++;
-		n = n / 16;
-	}
-	return (size + 1);
-}
-
 void	ft_if_pointer(t_strt *strt)
 {
 	unsigned long int	nb;
 	int			len;
 
 	nb = va_arg(strt->ap, unsigned long int);
-	len = ft_lenpointer(nb);
+	len = ft_len_numb(nb, strt->type);;
 	if (strt->minus && strt->width > 0)
 	{
 		write(1, "0x", 2);
