@@ -6,7 +6,7 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:41 by wspectra          #+#    #+#             */
-/*   Updated: 2020/11/28 21:33:42 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 17:16:00 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_if_uns_int(t_strt *strt)
 {
 	unsigned int	nb;
-	int			len;
+	int				len;
 
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
 	len = ft_len_numb(nb, strt->type);
@@ -26,14 +26,13 @@ void	ft_if_uns_int(t_strt *strt)
 			write(1, " ", 1);
 			strt->count++;
 			ft_put_space(strt, len);
-			return;
+			return ;
 		}
 		else
 			return ;
 	}
-	else if (strt->minus  && strt->width > 0)
+	else if (strt->minus && strt->width > 0)
 	{
-
 		ft_put_prec(strt, len);
 		ft_putnbr(nb, strt->type);
 		ft_put_space(strt, len);
@@ -55,5 +54,5 @@ void	ft_if_uns_int(t_strt *strt)
 		ft_put_prec(strt, len);
 		ft_putnbr(nb, strt->type);
 	}
-	strt->count  = strt->count + len;
+	strt->count = strt->count + len;
 }

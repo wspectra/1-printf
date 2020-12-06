@@ -6,13 +6,13 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:38 by wspectra          #+#    #+#             */
-/*   Updated: 2020/12/06 17:11:06 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:08:12 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_no_str(t_strt *strt, int bytes)
+void		ft_no_str(t_strt *strt, int bytes)
 {
 	if (bytes < 6 && bytes >= 0)
 	{
@@ -25,11 +25,12 @@ void ft_no_str(t_strt *strt, int bytes)
 		write(1, "(null)", 6);
 	}
 }
+
 void		ft_if_string(t_strt *strt)
 {
 	char	*str;
 	int		len;
-	int bytes;
+	int		bytes;
 
 	str = (char*)va_arg(strt->ap, char*);
 	bytes = strt->precision;
@@ -71,7 +72,8 @@ void		ft_if_string(t_strt *strt)
 		if (!str)
 		{
 			ft_no_str(strt, bytes);
-		} else
+		}
+		else
 			ft_putstr(strt, len, str);
 	}
 }

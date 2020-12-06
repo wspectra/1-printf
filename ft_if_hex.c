@@ -6,53 +6,69 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:30 by wspectra          #+#    #+#             */
-/*   Updated: 2020/11/28 21:33:31 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:40:58 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_if_hex(t_strt *strt)
+static void	ft_put_hex(t_strt *strt, unsigned int nb, int len)
 {
-	unsigned int	nb;
-	int			len;
+	ft_put_prec(strt, len);
+	ft_putnbr(nb, strt->type);
+}
 
-	nb = (unsigned int)va_arg(strt->ap, unsigned int);
-	len = ft_len_numb(nb, strt->type);;
+static void	ft_hex_exeption(t_strt *strt, int len, unsigned int nb)
+{
 	if (strt->precision == 0 && nb == 0)
 	{
 		if (strt->width > 0)
 		{
 			write(1, " ", 1);
 			ft_put_space(strt, len);
+			strt->count = strt->count + len;
 		}
 		else
 			return ;
 	}
-	else if (strt->minus && strt->width > 0)
-	{
+}
 
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
+static void	ft_hex_width(t_strt *strt, int len, unsigned int nb)
+{
+	if (strt->minus && strt->width > 0)
+	{
+		ft_put_hex(strt, nb, len);
 		ft_put_space(strt, len);
+		strt->count = strt->count + len;
 	}
 	else if (strt->zero == 1 && strt->precision <= -1)
 	{
 		ft_put_zero(strt, len);
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
-	}
-	else if (strt->width > 0)
-	{
-		ft_put_space(strt, len);
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
+		ft_put_hex(strt, nb, len);
+		strt->count = strt->count + len;
 	}
 	else
 	{
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
+		ft_put_space(strt, len);
+		ft_put_hex(strt, nb, len);
+		strt->count = strt->count + len;
 	}
-	strt->count  = strt->count + len;
 }
 
+void		ft_if_hex(t_strt *strt)
+{
+	unsigned int	nb;
+	int				len;
+
+	nb = (unsigned int)va_arg(strt->ap, unsigned int);
+	len = ft_len_numb(nb, strt->type);
+	if (strt->precision == 0 && nb == 0)
+		ft_hex_exeption(strt, len, nb);
+	else if (strt->width > 0)
+		ft_hex_width(strt, len, nb);
+	else
+	{
+		ft_put_hex(strt, nb, len);
+		strt->count = strt->count + len;
+	}
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_if_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wspectra <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 18:36:24 by wspectra          #+#    #+#             */
-/*   Updated: 2020/12/02 18:36:29 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:09:15 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	ft_if_int(t_strt *strt)
 {
-	long int			nb;
+	long int	nb;
 	int			len;
 	int			minus;
+
 	minus = 0;
 	len = 0;
 	nb = (int)va_arg(strt->ap, int);
@@ -25,7 +26,7 @@ void	ft_if_int(t_strt *strt)
 		if (strt->width > 0)
 		{
 			ft_put_space(strt, len);
-			return;
+			return ;
 		}
 		else
 			return ;
@@ -35,7 +36,7 @@ void	ft_if_int(t_strt *strt)
 		minus = 1;
 		nb = -nb;
 		len = 1;
-		if(strt->precision != -1)
+		if (strt->precision != -1)
 			strt->precision++;
 	}
 	len = len + ft_len_numb(nb, strt->type);

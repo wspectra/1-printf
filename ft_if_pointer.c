@@ -6,7 +6,7 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:35 by wspectra          #+#    #+#             */
-/*   Updated: 2020/11/28 21:33:36 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:08:34 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_if_pointer(t_strt *strt)
 {
 	unsigned long int	nb;
-	int			len;
+	int					len;
 
 	len = 0;
 	nb = va_arg(strt->ap, unsigned long int);
@@ -35,8 +35,8 @@ void	ft_if_pointer(t_strt *strt)
 		{
 			write(1, "0x", 2);
 		}
-		strt->count  = strt->count + len + 2;
-		return;
+		strt->count = strt->count + len + 2;
+		return ;
 	}
 	len = ft_len_numb(nb, strt->type);
 	if (strt->minus && strt->width > 0)
@@ -66,5 +66,5 @@ void	ft_if_pointer(t_strt *strt)
 		ft_put_prec(strt, len);
 		ft_putnbr(nb, strt->type);
 	}
-	strt->count  = strt->count + len + 2;
+	strt->count = strt->count + len + 2;
 }
