@@ -8,8 +8,8 @@ int main()
 //write(1, "\0", 1);
 //	char *str1;
 //	char *str2 = strdup("qwerty");
-	int k = ft_printf("my |%p\n", 140732675873192);
-	int i = printf("or |%p\n", 140732675873192);
+	int k = ft_printf("my |%016.p\n", 0);
+	int i = printf("or |%016.p\n", 0);
 //	int k =
 //	printf("or |%s\n", NULL);
 //	ft_printf("my |%s\n", NULL);
