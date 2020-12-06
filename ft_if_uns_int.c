@@ -6,13 +6,49 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:41 by wspectra          #+#    #+#             */
-/*   Updated: 2020/12/06 19:31:09 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 19:48:53 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_if_uns_int(t_strt *strt)
+static void	ft_put_uns(t_strt *strt, unsigned int nb, int len)
+{
+	ft_put_prec(strt, len);
+	ft_putnbr(nb, strt->type);
+	strt->count = strt->count + len;
+}
+
+static void	ft_hex_exeption(t_strt *strt, int len)
+{
+	if (strt->width > 0)
+	{
+		write(1, " ", 1);
+		strt->count++;
+		ft_put_space(strt, len);
+	}
+}
+
+static void	ft_hex_width(t_strt *strt, int len, unsigned int nb)
+{
+	if (strt->minus && strt->width > 0)
+	{
+		ft_put_uns(strt, nb, len);
+		ft_put_space(strt, len);
+	}
+	else if (strt->zero == 1 && strt->precision <= -1)
+	{
+		ft_put_zero(strt, len);
+		ft_put_uns(strt, nb, len);
+	}
+	else if (strt->width > 0)
+	{
+		ft_put_space(strt, len);
+		ft_put_uns(strt, nb, len);
+	}
+}
+
+void		ft_if_uns_int(t_strt *strt)
 {
 	unsigned int	nb;
 	int				len;
@@ -20,39 +56,9 @@ void	ft_if_uns_int(t_strt *strt)
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
 	len = ft_len_numb(nb, strt->type);
 	if (strt->precision == 0 && nb == 0)
-	{
-		if (strt->width > 0)
-		{
-			write(1, " ", 1);
-			strt->count++;
-			ft_put_space(strt, len);
-			return ;
-		}
-		else
-			return ;
-	}
-	else if (strt->minus && strt->width > 0)
-	{
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
-		ft_put_space(strt, len);
-	}
-	else if (strt->zero == 1 && strt->precision <= -1)
-	{
-		ft_put_zero(strt, len);
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
-	}
+		ft_hex_exeption(strt, len);
 	else if (strt->width > 0)
-	{
-		ft_put_space(strt, len);
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
-	}
+		ft_hex_width(strt, len, nb);
 	else
-	{
-		ft_put_prec(strt, len);
-		ft_putnbr(nb, strt->type);
-	}
-	strt->count = strt->count + len;
+		ft_put_uns(strt, nb, len);
 }
