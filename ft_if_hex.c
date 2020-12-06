@@ -21,7 +21,6 @@ static void	ft_put_hex(t_strt *strt, unsigned int nb, int len)
 
 static void	ft_hex_exeption(t_strt *strt, int len)
 {
-
 	if (strt->width > 0)
 	{
 		write(1, " ", 1);
