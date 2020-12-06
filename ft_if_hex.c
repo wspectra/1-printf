@@ -16,20 +16,17 @@ static void	ft_put_hex(t_strt *strt, unsigned int nb, int len)
 {
 	ft_put_prec(strt, len);
 	ft_putnbr(nb, strt->type);
+	strt->count = strt->count + len;
 }
 
-static void	ft_hex_exeption(t_strt *strt, int len, unsigned int nb)
+static void	ft_hex_exeption(t_strt *strt, int len)
 {
-	if (strt->precision == 0 && nb == 0)
+
+	if (strt->width > 0)
 	{
-		if (strt->width > 0)
-		{
-			write(1, " ", 1);
-			ft_put_space(strt, len);
-			strt->count = strt->count + len;
-		}
-		else
-			return ;
+		write(1, " ", 1);
+		ft_put_space(strt, len);
+		strt->count = strt->count + len;
 	}
 }
 
@@ -39,19 +36,16 @@ static void	ft_hex_width(t_strt *strt, int len, unsigned int nb)
 	{
 		ft_put_hex(strt, nb, len);
 		ft_put_space(strt, len);
-		strt->count = strt->count + len;
 	}
 	else if (strt->zero == 1 && strt->precision <= -1)
 	{
 		ft_put_zero(strt, len);
 		ft_put_hex(strt, nb, len);
-		strt->count = strt->count + len;
 	}
 	else
 	{
 		ft_put_space(strt, len);
 		ft_put_hex(strt, nb, len);
-		strt->count = strt->count + len;
 	}
 }
 
@@ -63,12 +57,11 @@ void		ft_if_hex(t_strt *strt)
 	nb = (unsigned int)va_arg(strt->ap, unsigned int);
 	len = ft_len_numb(nb, strt->type);
 	if (strt->precision == 0 && nb == 0)
-		ft_hex_exeption(strt, len, nb);
+		ft_hex_exeption(strt, len);
 	else if (strt->width > 0)
 		ft_hex_width(strt, len, nb);
 	else
 	{
 		ft_put_hex(strt, nb, len);
-		strt->count = strt->count + len;
 	}
 }
