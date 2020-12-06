@@ -6,11 +6,12 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:41 by wspectra          #+#    #+#             */
-/*   Updated: 2020/12/06 17:16:00 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:42:58 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 
 void	ft_if_uns_int(t_strt *strt)
 {

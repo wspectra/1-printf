@@ -6,23 +6,47 @@
 /*   By: wspectra <wspectra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 21:33:38 by wspectra          #+#    #+#             */
-/*   Updated: 2020/12/06 18:08:12 by wspectra         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:53:53 by wspectra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_no_str(t_strt *strt, int bytes)
+static void	ft_put_string(t_strt *strt, char *str, int len, int bytes)
 {
-	if (bytes < 6 && bytes >= 0)
+	if (!str)
 	{
-		strt->count = strt->count + bytes;
-		write(1, "(null)", bytes);
+		if (bytes < 6 && bytes >= 0)
+		{
+			strt->count = strt->count + bytes;
+			write(1, "(null)", bytes);
+		}
+		else
+		{
+			strt->count = strt->count + 6;
+			write(1, "(null)", 6);
+		}
 	}
 	else
+		ft_putstr(strt, len, str);
+}
+
+static void	ft_width_string(t_strt *strt, int len, char *str, int bytes)
+{
+	if (strt->minus && strt->width > 0)
 	{
-		strt->count = strt->count + 6;
-		write(1, "(null)", 6);
+		ft_put_string(strt, str, len, bytes);
+		ft_put_space(strt, len);
+	}
+	else if (strt->zero && strt->width > 0)
+	{
+		ft_put_zero(strt, len);
+		ft_put_string(strt, str, len, bytes);
+	}
+	else if (strt->width > 0)
+	{
+		ft_put_space(strt, len);
+		ft_put_string(strt, str, len, bytes);
 	}
 }
 
@@ -37,43 +61,8 @@ void		ft_if_string(t_strt *strt)
 	len = ft_strlen(str, strt->precision);
 	if (len > strt->precision && strt->precision >= 0)
 		len = strt->precision;
-	if (strt->minus && strt->width > 0)
-	{
-		if (!str)
-		{
-			ft_no_str(strt, bytes);
-		}
-		else
-			ft_putstr(strt, len, str);
-		ft_put_space(strt, len);
-	}
-	else if (strt->zero && strt->width > 0)
-	{
-		ft_put_zero(strt, len);
-		if (!str)
-		{
-			ft_no_str(strt, bytes);
-		}
-		else
-			ft_putstr(strt, len, str);
-	}
-	else if (strt->width > 0)
-	{
-		ft_put_space(strt, len);
-		if (!str)
-		{
-			ft_no_str(strt, bytes);
-		}
-		else
-			ft_putstr(strt, len, str);
-	}
+	if (strt->width > 0)
+		ft_width_string(strt, len, str, bytes);
 	else
-	{
-		if (!str)
-		{
-			ft_no_str(strt, bytes);
-		}
-		else
-			ft_putstr(strt, len, str);
-	}
+		ft_put_string(strt, str, len, bytes);
 }
