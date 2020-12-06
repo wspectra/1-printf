@@ -36,8 +36,6 @@ void		ft_if_char(t_strt *strt)
 		}
 	}
 	else
-	{
 		ft_putchar(c, 0);
-	}
 	strt->count++;
 }
