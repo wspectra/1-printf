@@ -31,7 +31,7 @@ static void	ft_put_minus(int minus)
 		write(1, "-", 1);
 }
 
-static void	ft_hex_width(t_strt *strt, int len, long int nb, int minus)
+static void	ft_int_width(t_strt *strt, int len, long int nb, int minus)
 {
 	if (strt->minus && strt->width > 0)
 	{
@@ -74,7 +74,7 @@ void		ft_if_int(t_strt *strt)
 	if (strt->precision == 0 && nb == 0)
 		ft_int_exeption(strt, 0);
 	else if (strt->width > 0)
-		ft_hex_width(strt, len, nb, minus);
+		ft_int_width(strt, len, nb, minus);
 	else
 	{
 		ft_put_minus(minus);
